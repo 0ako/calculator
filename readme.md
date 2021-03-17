@@ -31,3 +31,6 @@ Techniques to familiarize myself with:
 - convert string to float number inline with parseFloat (parseInt also exists)
 - Grab text content of HTML element using element.textContent
     - key.textContent grabs text content of HTML element assigned to key
+- Use forEach with Array.from() to cycle through every element in a nodeList
+    - To remove a class from all the children nodes of a parentNode
+    - Array.from(key.parentNode.children).forEach(k => k.classList.remove('is-depressed'))

@@ -27,10 +27,13 @@ keys.addEventListener('click', e => {
         let keyContent = key.textContent; // set the target's HTML text content to a variable!
         let displayedNum = display.textContent; // set display's (element with '.calculator__display') HTML text content to a variable 
         
+        Array.from(key.parentNode.children).forEach(k => k.classList.remove('is-depressed')) // Cycles through all children nodes of parentNode (i.e. all keys) to remove class. It's run before class is added
+
         if(!action) { // therefore, is number button
             console.log('number key!')
-            if(display.textContent === '0'|| calculator.dataset.previousKeyType === 'operator') { // if either condition is true, sets display to key.textContent. TODO remove previousKeyType 'operator' after next number after operator is pressed, so that display updates properly after operator was pressed
+            if(display.textContent === '0'|| calculator.dataset.previousKeyType === 'operator') { // if either condition is true, sets display to key.textContent
                 display.textContent = key.textContent; // assign the value to display.textContent, not the equivalent JS variable, otherwise it won't live update 
+                calculator.removeAttribute('data-previous-key-type'); // !! not mentioned in article
             } else {
                 display.textContent = display.textContent + key.textContent;
             } 
@@ -51,7 +54,8 @@ keys.addEventListener('click', e => {
             const firstValue = calculator.dataset.firstValue;
             const operator = calculator.dataset.operator;
             const secondValue = display.textContent; 
-            calculate(firstValue, operator, secondValue); // TODO: display.textContent = result
+            display.textContent = calculate(firstValue, operator, secondValue); 
+            calculator.dataset.previousKeyType = 'operator'
         }
         if(action == 'decimal') {
             console.log("decimal key")
@@ -61,7 +65,6 @@ keys.addEventListener('click', e => {
             console.log("clear key")
             display.textContent = 0;
         }
-        // Array.from(key.parentNode.children).forEach(k => k.classList.remove('is-depressed')) // TODO: remove after Mary hits number key again
     }
 })
 
