@@ -58,8 +58,10 @@ keys.addEventListener('click', e => {
             calculator.dataset.previousKeyType = 'operator'
         }
         if(action == 'decimal') {
-            console.log("decimal key")
-            display.textContent += key.textContent; // TODO: prevent multiple decimal points from being inserted
+            if(!display.textContent.includes('.')){
+                console.log("decimal key")
+                display.textContent += key.textContent; 
+            }
         }
         if(action == 'clear') {
             console.log("clear key")
