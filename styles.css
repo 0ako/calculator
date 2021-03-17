@@ -1,4 +1,4 @@
-.buttons {
-    display: flex;
-    flex-direction: row;
+.calculator__keys {
+    /* display: grid; */
+    /* other CSS */
 }
