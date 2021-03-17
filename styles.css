@@ -2,3 +2,7 @@
     /* display: grid; */
     /* other CSS */
 }
+
+.is-depressed{
+    background-color: blue;
+}
